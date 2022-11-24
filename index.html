@@ -989,36 +989,34 @@
                         class="input-question"
                         type="radio"
                         id="question1"
-                        name="question"
+                        name="question1"
                         value="A" />
                       <label for="question1"> The Anh</label><br />
                       <input
                         class="input-question"
                         type="radio"
                         id="question2"
-                        name="question"
+                        name="question1"
                         value="B" />
                       <label for="question2">The Anh</label><br />
                       <input
                         class="input-question"
                         type="radio"
                         id="question3"
-                        name="question"
+                        name="question1"
                         value="C" />
                       <label for="question3">The Anh</label><br />
                       <input
-                        checked
                         class="input-question"
                         type="radio"
                         id="question4"
-                        name="question"
+                        name="question1"
                         value="D" />
                       <label for="question4">The Anh</label><br /><br />
                     </form>
                   </div>
                 </div>
               </div>
-
               <div class="mySlides fade">
                 <div class="form-question">
                   <h4 class="name-question">
@@ -1028,73 +1026,31 @@
                   <div class="answers">
                     <form action="/action_page.php">
                       <input
-                        checked
                         class="input-question"
                         type="radio"
                         id="question1"
-                        name="question"
+                        name="question2"
                         value="A" />
                       <label for="question1"> The Anh</label><br />
                       <input
                         class="input-question"
                         type="radio"
                         id="question2"
-                        name="question"
+                        name="question2"
                         value="B" />
                       <label for="question2">The Anh</label><br />
                       <input
                         class="input-question"
                         type="radio"
                         id="question3"
-                        name="question"
+                        name="question2"
                         value="C" />
                       <label for="question3">The Anh</label><br />
                       <input
                         class="input-question"
                         type="radio"
                         id="question4"
-                        name="question"
-                        value="D" />
-                      <label for="question4">The Anh</label><br /><br />
-                    </form>
-                  </div>
-                </div>
-              </div>
-
-              <div class="mySlides fade">
-                <div class="form-question">
-                  <h4 class="name-question">
-                    <span class="number-question">3. </span>Ai thong minh hon
-                    hoc sinh lop 5?
-                  </h4>
-                  <div class="answers">
-                    <form action="/action_page.php">
-                      <input
-                        class="input-question"
-                        type="radio"
-                        id="question1"
-                        name="question"
-                        value="A" />
-                      <label for="question1"> The Anh</label><br />
-                      <input
-                        class="input-question"
-                        type="radio"
-                        id="question2"
-                        name="question"
-                        value="B" />
-                      <label for="question2">The Anh</label><br />
-                      <input
-                        class="input-question"
-                        type="radio"
-                        id="question3"
-                        name="question"
-                        value="C" />
-                      <label for="question3">The Anh</label><br />
-                      <input
-                        class="input-question"
-                        type="radio"
-                        id="question4"
-                        name="question"
+                        name="question2"
                         value="D" />
                       <label for="question4">The Anh</label><br /><br />
                     </form>
@@ -1110,11 +1066,6 @@
             <div class="tab-question" style="text-align: center">
               <span class="dot" onclick="currentSlide(1)">1</span>
               <span class="dot" onclick="currentSlide(2)">2</span>
-              <span class="dot" onclick="currentSlide(3)">3</span>
-              <span class="dot" onclick="currentSlide(4)">4</span>
-              <span class="dot" onclick="currentSlide(5)">5</span>
-              <span class="dot" onclick="currentSlide(6)">6</span>
-              <span class="dot" onclick="currentSlide(7)">7</span>
             </div>
           </div>
         </div>
@@ -1153,17 +1104,19 @@
       }
       //
       // console.log(document.getElementById('question4').checked);
-      var a = document.querySelectorAll(".answers");
-      var b = document.querySelectorAll(".input-question");
-      for (let i = 0; i < a.length; i++) {
-        for (let j = 0; j < b.length; j++) {
-          if (b[j].checked == true) {
-            console.log(b[j]);
+      var a = document.querySelectorAll(".mySlides");
+      console.log(a);
+      for (let index = 0; index < a.length; index++) {
+        const checked = document.getElementsByName(`question${index + 1}`);
+
+        checked.forEach((element) => {
+          element.addEventListener("change", () => {
+            console.log(document.getElementsByClassName("dot")[index]);
             document
               .getElementsByClassName("dot")
-              [i].classList.add("dot-clicked");
-          }
-        }
+              [index].classList.add("dot-clicked");
+          });
+        });
       }
     </script>
   </body>
